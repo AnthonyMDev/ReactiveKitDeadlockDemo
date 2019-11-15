@@ -54,13 +54,12 @@ class ReactiveKitDeadlockDemoTests: XCTestCase {
                     .observeNext {
                         if $0 {
                             done()
+                            disposeBag.dispose()
                         }
                 }
                 .dispose(in: disposeBag)
             }
         }
-
-        disposeBag.dispose()
     }
 
 }

@@ -5,14 +5,14 @@ platform :ios, '11.4'
 target 'ReactiveKitDeadlockDemo' do
     use_frameworks!
 
-    pod 'ReactiveKit', '3.14.2'
+    pod 'ReactiveKit', :git => 'https://github.com/DeclarativeHub/ReactiveKit.git', :branch => 'feature/threading-improvements'
 
     target 'ReactiveKitDeadlockDemoTests' do
         inherit! :search_paths
 
         # Pods for testing
         pod 'Nimble'
-        pod 'ReactiveKit', '3.14.2'
+        pod 'ReactiveKit', :git => 'https://github.com/DeclarativeHub/ReactiveKit.git', :branch => 'feature/threading-improvements'
     end
 
 end
