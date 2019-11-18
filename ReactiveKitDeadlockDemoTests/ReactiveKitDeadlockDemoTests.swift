@@ -18,10 +18,7 @@ class ReactiveKitDeadlockDemoTests: XCTestCase {
         case testError
     }
 
-    func testExample() {
-
-        let disposeBag = DisposeBag()
-
+    func testExample() {        
         let expectedPollCount = 5
         let pollInterval: Double = 0.1
         let pollInfo = PollInfo(interval: pollInterval, repeatCount: Double(expectedPollCount))
@@ -31,6 +28,7 @@ class ReactiveKitDeadlockDemoTests: XCTestCase {
                                   attributes: DispatchQueue.Attributes.concurrent)
 
         for _ in 0...50 {
+            let disposeBag = DisposeBag()
             var signalCallCount = 0
 
             let signal = Signal<Bool, Error> { observer in
