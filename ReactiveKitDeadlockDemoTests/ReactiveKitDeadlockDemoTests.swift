@@ -23,11 +23,13 @@ class ReactiveKitDeadlockDemoTests: XCTestCase {
         let pollInterval: Double = 0.1
         let pollInfo = PollInfo(interval: pollInterval, repeatCount: Double(expectedPollCount))
 
-        let queue = DispatchQueue(label: "TestSignal.Queue",
-                                  qos: .userInitiated,
-                                  attributes: DispatchQueue.Attributes.concurrent)
 
-        for _ in 0...50 {
+        for i in 0...250 {
+            let queue = DispatchQueue(label: "TestSignal.Queue \(i)",
+                                      qos: .userInitiated,
+                                      attributes: DispatchQueue.Attributes.concurrent)
+            print("start loop \(i)")
+
             let disposeBag = DisposeBag()
             var signalCallCount = 0
 
@@ -46,17 +48,19 @@ class ReactiveKitDeadlockDemoTests: XCTestCase {
                 return SimpleDisposable()
             }
 
-            waitUntil { done in
+            waitUntil(timeout: 2.0) { done in
                 signal
                     .retry(for: pollInfo)                    
                     .observeNext {
                         if $0 {
-                            done()
                             disposeBag.dispose()
+                            print("done")
+                            done()
                         }
                 }
                 .dispose(in: disposeBag)
             }
+            print("moving on \(i) - \(signalCallCount)")
         }
     }
 

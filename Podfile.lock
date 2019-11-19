@@ -4,26 +4,17 @@ PODS:
 
 DEPENDENCIES:
   - Nimble
-  - ReactiveKit (from `https://github.com/DeclarativeHub/ReactiveKit.git`, branch `feature/threading-improvements`)
+  - ReactiveKit
 
 SPEC REPOS:
   trunk:
     - Nimble
-
-EXTERNAL SOURCES:
-  ReactiveKit:
-    :branch: feature/threading-improvements
-    :git: https://github.com/DeclarativeHub/ReactiveKit.git
-
-CHECKOUT OPTIONS:
-  ReactiveKit:
-    :commit: bd9de0b510aa4d9b9c3a78c58217c8d91290165c
-    :git: https://github.com/DeclarativeHub/ReactiveKit.git
+    - ReactiveKit
 
 SPEC CHECKSUMS:
   Nimble: 18d5360282923225d62b09d781f63abc1a0111fc
   ReactiveKit: b0d1dfd0ec6d67d58b99a9c7db87dfcd6f359bc0
 
-PODFILE CHECKSUM: a9c7d73307ca9553cc233823e7682c88133aacec
+PODFILE CHECKSUM: 3a0cedd726978cd86f3ad4639351c23efc2ad421
 
 COCOAPODS: 1.8.4
